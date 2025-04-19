@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المتبرعين بالدم - بنك الدم محافظة قنا</title>
+    <!-- أيقونة الموقع (Favicon) -->
+    <link rel="icon" href="دم.png" type="ايقونه الموقع">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f3e9;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 90px; /* زيادة لاستيعاب الشعار الكبير */
+        }
+        
+        /* الشريط العلوي - التصميم الجديد */
+        .main-nav {
+            background: linear-gradient(to right, #8B0000, #CD5C5C);
+            border-bottom: 3px solid #DAA520;
+            padding: 0 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            height: 90px; /* زيادة الارتفاع */
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* الشعار على اليمين - تصميم جديد */
+        .logo {
+            order: 2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 70px; /* حجم ثابت كبير */
+            width: auto;
+            max-width: 200px; /* أقصى عرض مسموح */
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.7));
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05); /* تأثير تكبير عند المرور */
+        }
+        
+        /* القائمة المنسدلة */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            order: 1;
+        }
+        
+        .dropbtn {
+            background-color: transparent;
+            color: #FFF8DC;
+            padding: 12px 18px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dropbtn i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .dropdown:hover .dropbtn i {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #8B0000;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+        
+        .dropdown-content a {
+            color: #FFF8DC;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: right;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #CD5C5C;
+            color: #DAA520;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* زر التبرع الآن */
+        .nav-actions {
+            order: 3;
+        }
+        
+        .donate-btn {
+            text-decoration: none; /* هذه السطر يزيل الخط التحتي */
+            text-align: center;
+            display: inline-block;
+            background-color: #DAA520;
+            color: #8B0000 !important;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+        }        
+        .donate-btn:hover {
+            background-color: #F5DEB3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* قسم المتبرعين */
+        .donors-section {
+            padding: 80px 20px;
+            background-color: #FFF8DC;
+        }
+        
+        .donors-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .donors-section h2 {
+            color: #8B0000;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .donors-section h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #DAA520;
+            margin: 15px auto;
+        }
+        
+        /* شريط البحث */
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #DAA520;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            border-color: #8B0000;
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.2);
+        }
+        
+        .search-box button {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #8B0000;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        /* جدول المتبرعين */
+        .donors-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            table-layout: fixed;
+        }
+        
+        .donors-table thead {
+            background: linear-gradient(to right, #8B0000, #CD5C5C);
+            color: white;
+        }
+        
+        .donors-table th {
+            padding: 15px;
+            text-align: right;
+            font-weight: bold;
+        }
+        
+        .donors-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: right;
+            word-break: break-word;
+        }
+        
+        .donors-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .donors-table tbody tr:hover {
+            background-color: #FFF0F0;
+        }
+        
+        .blood-type {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            background-color: #FFEBEE;
+            color: #8B0000;
+        }
+        
+        /* تنسيق الأرقام */
+        .phone-number {
+            direction: ltr;
+            text-align: left;
+            display: inline-block;
+            white-space: nowrap;
+            font-family: monospace;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* زر الاتصال */
+        .call-btn {
+            background-color: #DAA520;
+            color: #8B0000;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .call-btn:hover {
+            background-color: #8B0000;
+            color: white;
+        }
+        
+        /* تنقل الجدول */
+        .table-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .page-btn {
+            background-color: white;
+            border: 1px solid #DAA520;
+            color: #8B0000;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .page-btn.active {
+            background-color: #8B0000;
+            color: white;
+            border-color: #8B0000;
+        }
+        
+        .page-btn:hover:not(.active) {
+            background-color: #FFF0F0;
+        }
+        
+        /* فوتر الصفحة */
+        footer {
+            background: linear-gradient(to right, #8B0000, #CD5C5C);
+            color: #FFF8DC;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 80px; /* حجم كبير للشعار في الفوتر */
+            width: auto;
+            max-width: 220px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.7));
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: #FFF8DC;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links a:hover {
+            color: #DAA520;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: #FFF8DC;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #DAA520;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+            
+            .main-nav {
+                height: 80px;
+                padding: 0 15px;
+            }
+            
+            .logo img {
+                height: 75px; /* حجم أصغر قليلاً للجوال */
+                max-width: 180px;
+            }
+            
+            .dropbtn {
+                padding: 10px 12px;
+                font-size: 15px;
+            }
+            
+            .donate-btn {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+            
+            .dropdown-content {
+                min-width: 180px;
+            }
+            
+            .donors-table {
+                display: table;
+                width: 100%;
+                overflow-x: visible;
+                white-space: normal;
+                table-layout: auto;
+            }
+            
+            .donors-table th, 
+            .donors-table td {
+                padding: 8px 5px;
+                font-size: 14px;
+                white-space: normal;
+                word-break: break-word;
+            }
+            
+            .donors-table th:nth-child(1),
+            .donors-table td:nth-child(1) {
+                width: 20%;
+            }
+            
+            .donors-table th:nth-child(2),
+            .donors-table td:nth-child(2) {
+                width: 10%;
+            }
+            
+            .donors-table th:nth-child(3),
+            .donors-table td:nth-child(3) {
+                width: 15%;
+            }
+            
+            .donors-table th:nth-child(4),
+            .donors-table td:nth-child(4) {
+                width: 20%;
+            }
+            
+            .donors-table th:nth-child(5),
+            .donors-table td:nth-child(5) {
+                width: 20%;
+                min-width: 120px;
+            }
+            
+            .donors-table th:nth-child(6),
+            .donors-table td:nth-child(6) {
+                width: 15%;
+            }
+            
+            .phone-number {
+                font-size: 13px;
+                word-break: keep-all;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100px;
+                display: inline-block;
+                white-space: nowrap;
+            }
+            
+            .donors-section h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-logo img {
+                height: 130px;
+                max-width: 300px;
+            }
+        }
+    </style>
+    <!-- روابط أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- الشريط العلوي الجديد -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <!-- الشعار على اليمين -->
+            <div class="logo">
+                <img src="/Users/mac/Desktop/اتبرع بالدم لأهل قنا/تحديث.png" alt="شعار بنك الدم بمحافظة قنا">
+            </div>
+            
+            <!-- زر التبرع الآن -->
+            <div class="nav-actions">
+                <a href="Donate now.html" class="donate-btn">اضف بيناتك في الموقع 
+                    <br> 
+                    و كن متبرع بالدم
+                </a>
+            </div>
+            
+            <!-- القائمة المنسدلة -->
+            <div class="dropdown">
+                <button class="dropbtn">
+                    تصفح الموقع 
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="index.html">الصفحه الرئيسية</a>
+                    <a href="Donation conditions.html">شروط التبرع</a>
+                    <a href="blood donors.html">المتبرعين بالدم</a>
+                    <a href="Frequently Asked Questions.html">الأسئلة الشائعة</a>
+                    <a href="Contact us.html">اتصل بنا</a>
+                    <a href="desgin.html">مصممين الموقع</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- قسم المتبرعين بالدم -->
+    <section class="donors-section">
+        <div class="donors-container">
+            <h2>قائمة المتبرعين بالدم في محافظة قنا</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #8B0000; font-size: 1.1rem;">
+                يمكنك البحث عن متبرعين حسب المنطقة أو فصيلة الدم للتواصل معهم في حالات الطوارئ
+            </p>
+            
+            <!-- شريط البحث -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="ابحث باسم المتبرع أو المنطقة أو فصيلة الدم...">
+                    <button type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <!-- جدول المتبرعين -->
+            <div style="width: 100%; overflow-x: visible;">
+                <table class="donors-table">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>العمر</th>
+                            <th>فصيلة الدم</th>
+                            <th>المكان</th>
+                            <th>رقم التليفون</th>
+                            <th>إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="donorsTableBody">
+                        <tr>
+                            <td>لايوجد متبرعين</td>
+                            <td>0</td>
+                            <td><span class="blood-type">A+</span></td>
+                            <td>لايوجد متبرعين</td>
+                            <td class="phone-number">00000000000</td>
+                            <td><button class="call-btn">اتصال</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- تنقل الصفحات -->
+            <div class="table-nav">
+                <button class="page-btn" data-page="prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="page-btn active" data-page="1">1</button>
+                <button class="page-btn" data-page="next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- فوتر الصفحة -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="/Users/mac/Desktop/اتبرع بالدم لأهل قنا/تحديث.png" alt="شعار بنك الدم بمحافظة قنا">
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html">الصفحه الرئيسية</a></li>
+                <li><a href="Donation conditions.html">شروط التبرع</a></li>
+                <li><a href="blood donors.html">المتبرعين بالدم</a></li>
+                <li><a href="Frequently Asked Questions.html">الأسئلة الشائعة</a></li>
+                <li><a href="Contact us.html">اتصل بنا</a></li>
+                <li><a href="desgin.html">مصممين الموقع</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61565860452700"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="copyright">
+                جميع الحقوق محفوظة 2025 © | بنك الدم بمحافظة قنا
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // وظيفة البحث في الجدول
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const input = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#donorsTableBody tr');
+            
+            rows.forEach(row => {
+                const cells = row.getElementsByTagName('td');
+                let found = false;
+                
+                for (let i = 0; i < cells.length - 1; i++) { // نتجاهل خلية الإجراءات
+                    if (cells[i].textContent.toLowerCase().includes(input)) {
+                        found = true;
+                        break;
+                    }
+                }
+                
+                row.style.display = found ? '' : 'none';
+            });
+        });
+        
+        // وظيفة زر الاتصال
+        document.querySelectorAll('.call-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const phoneNumber = this.parentNode.parentNode.querySelector('.phone-number').textContent;
+                alert(`سيتم الاتصال بالرقم: ${phoneNumber}`);
+                // يمكن استبدال هذا بسكربت الاتصال الفعلي
+            });
+        });
+        
+        // متغيرات للتحكم في الصفحات
+        let currentPage = 1;
+        const rowsPerPage = 5; // عدد الصفوف في كل صفحة
+        const rows = document.querySelectorAll('#donorsTableBody tr');
+        const totalPages = Math.ceil(rows.length / rowsPerPage);
+        
+        // وظيفة لعرض الصفحة المحددة
+        function showPage(page) {
+            // إخفاء جميع الصفوف
+            rows.forEach(row => {
+                row.style.display = 'none';
+            });
+            
+            // حساب الصفوف التي يجب عرضها
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            
+            // عرض الصفوف للصفحة الحالية
+            for (let i = start; i < end && i < rows.length; i++) {
+                rows[i].style.display = '';
+            }
+            
+            // تحديث أزرار الصفحات
+            updatePaginationButtons(page);
+        }
+        
+        // وظيفة لتحديث أزرار الصفحات
+        function updatePaginationButtons(currentPage) {
+            const buttons = document.querySelectorAll('.page-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+                
+                // إذا كان الزر يمثل الصفحة الحالية
+                if (button.textContent.trim() == currentPage) {
+                    button.classList.add('active');
+                }
+            });
+        }
+        
+        // وظيفة تنقل الصفحات
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const pageAction = this.getAttribute('data-page');
+                
+                if (pageAction === 'prev') {
+                    // زر السابق
+                    if (currentPage > 1) {
+                        currentPage--;
+                        showPage(currentPage);
+                    }
+                } else if (pageAction === 'next') {
+                    // زر التالي
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        showPage(currentPage);
+                    }
+                } else {
+                    // زر رقم الصفحة
+                    const pageNum = parseInt(this.textContent);
+                    if (pageNum !== currentPage) {
+                        currentPage = pageNum;
+                        showPage(currentPage);
+                    }
+                }
+            });
+        });
+        
+        // عرض الصفحة الأولى عند التحميل
+        showPage(1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأسئلة الشائعة - بنك الدم محافظة قنا</title>
+    <!-- أيقونة الموقع (Favicon) -->
+    <link rel="icon" href="دم.png" type="ايقونه الموقع">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f3e9;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 90px; /* زيادة لاستيعاب الشعار الكبير */
+        }
+        
+        /* الشريط العلوي - التصميم الجديد */
+        .main-nav {
+            background: linear-gradient(to right, #8B0000, #CD5C5C);
+            border-bottom: 3px solid #DAA520;
+            padding: 0 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            height: 90px; /* زيادة الارتفاع */
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* الشعار على اليمين - تصميم جديد */
+        .logo {
+            order: 2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 70px; /* حجم ثابت كبير */
+            width: auto;
+            max-width: 200px; /* أقصى عرض مسموح */
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.7));
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05); /* تأثير تكبير عند المرور */
+        }
+        
+        /* القائمة المنسدلة */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            order: 1;
+        }
+        
+        .dropbtn {
+            background-color: transparent;
+            color: #FFF8DC;
+            padding: 12px 18px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dropbtn i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .dropdown:hover .dropbtn i {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #8B0000;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+        
+        .dropdown-content a {
+            color: #FFF8DC;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: right;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #CD5C5C;
+            color: #DAA520;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* زر التبرع الآن */
+        .nav-actions {
+            order: 3;
+        }
+        
+        .donate-btn {
+    text-decoration: none; /* هذه السطر يزيل الخط التحتي */
+    text-align: center;
+    display: inline-block;
+    background-color: #DAA520;
+    color: #8B0000 !important;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}        
+        .donate-btn:hover {
+            background-color: #F5DEB3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* قسم الأسئلة الشائعة */
+        .faq-section {
+            padding: 80px 20px;
+            background-color: #FFF8DC;
+        }
+        
+        .faq-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .faq-section h2 {
+            color: #8B0000;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .faq-section h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #DAA520;
+            margin: 15px auto;
+        }
+        
+        .faq-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .category-btn {
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: #DAA520;
+            color: #8B0000;
+        }
+        
+        .faq-accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            background-color: white;
+            color: #8B0000;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            background-color: #f9f9f9;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-answer-content {
+            padding: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* فوتر الصفحة */
+        footer {
+            background: linear-gradient(to right, #8B0000, #CD5C5C);
+            color: #FFF8DC;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 80px; /* حجم كبير للشعار في الفوتر */
+            width: auto;
+            max-width: 220px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.7));
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: #FFF8DC;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links a:hover {
+            color: #DAA520;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: #FFF8DC;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #DAA520;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+            
+            .main-nav {
+                height: 80px;
+                padding: 0 15px;
+            }
+            
+            .logo img {
+                height: 75px; /* حجم أصغر قليلاً للجوال */
+                max-width: 180px;
+            }
+            
+            .dropbtn {
+                padding: 10px 12px;
+                font-size: 15px;
+            }
+            
+            .donate-btn {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+            
+            .dropdown-content {
+                min-width: 180px;
+            }
+            
+            .faq-section h2 {
+                font-size: 2rem;
+            }
+            
+            .faq-question {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            
+            .faq-answer-content {
+                padding: 15px;
+            }
+            
+            .footer-logo img {
+                height: 130px;
+                max-width: 300px;
+            }
+        }
+    </style>
+    <!-- روابط أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- الشريط العلوي الجديد -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <!-- الشعار على اليمين -->
+            <div class="logo">
+                <img src="/Users/mac/Desktop/اتبرع بالدم لأهل قنا/تحديث.png" alt="شعار بنك الدم بمحافظة قنا">
+            </div>
+            
+            <!-- زر التبرع الآن -->
+            <div class="nav-actions">
+                <a href="Donate now.html" class="donate-btn">اضف بيناتك في الموقع 
+                    <br> 
+                    و كن متبرع بالدم
+                </a>
+            </div>
+                    
+            <!-- القائمة المنسدلة -->
+            <div class="dropdown">
+                <button class="dropbtn">
+                    تصفح الموقع 
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="index.html">الصفحه الرئيسية</a>
+                    <a href="Donation conditions.html">شروط التبرع</a>
+                    <a href="blood donors.html">المتبرعين بالدم</a>
+                    <a href="Frequently Asked Questions.html">الأسئلة الشائعة</a>
+                    <a href="Contact us.html">اتصل بنا</a>
+                    <a href="desgin.html">مصممين الموقع</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- قسم الأسئلة الشائعة -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2>الأسئلة الشائعة</h2>
+            <p class="faq-intro">هنا تجد إجابات على أكثر الأسئلة شيوعاً حول التبرع بالدم في محافظة قنا. إذا كان لديك سؤال آخر، لا تتردد في الاتصال بنا.</p>
+            
+            <div class="faq-categories">
+                <button class="category-btn active">الكل</button>
+                <button class="category-btn">قبل التبرع</button>
+                <button class="category-btn">أثناء التبرع</button>
+                <button class="category-btn">بعد التبرع</button>
+                <button class="category-btn">الأهلية</button>
+            </div>
+            
+            <div class="faq-accordion">
+                <!-- سؤال 1 -->
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>ما هي شروط التبرع بالدم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" style="max-height: 500px;">
+                        <div class="faq-answer-content">
+                            <p>لكي تكون مؤهلاً للتبرع بالدم في محافظة قنا، يجب أن:</p>
+                            <ul>
+                                <li>يكون عمرك بين 18 و65 سنة</li>
+                                <li>يزيد وزنك عن 50 كيلوغرام</li>
+                                <li>تكون بصحة جيدة ولا تعاني من أي أمراض معدية</li>
+                                <li>أن يكون مستوى الهيموجلوبين لديك ضمن المعدل الطبيعي (12.5 جم/ديسيلتر للنساء و13.5 جم/ديسيلتر للرجال)</li>
+                                <li>عدم التبرع بالدم خلال آخر 3 أشهر للرجال أو 4 أشهر للنساء</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- سؤال 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كم مرة يمكنني التبرع بالدم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>يمكن للرجال التبرع بالدم كل 3 أشهر (4 مرات في السنة)، بينما يمكن للنساء التبرع كل 4 أشهر (3 مرات في السنة). هذه الفترة ضرورية للجسم لتعويض الدم المتبرع به.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- سؤال 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل التبرع بالدم آمن؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>نعم، التبرع بالدم آمن تماماً عندما يتم في مراكز معتمدة مثل بنوك الدم في محافظة قنا. نستخدم أدوات معقمة لمرة واحدة فقط لكل متبرع، ويتم الفحص الطبي قبل التبرع للتأكد من أهليتك.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- سؤال 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كم تستغرق عملية التبرع بالدم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>عملية التبرع الفعلية تستغرق حوالي 10-15 دقيقة فقط. ولكن يجب أن تأخذ في الاعتبار الوقت الإجمالي الذي يشمل:</p>
+                            <ul>
+                                <li>التسجيل والاستبيان الصحي: 10 دقائق</li>
+                                <li>الفحص الطبي: 5 دقائق</li>
+                                <li>التبرع: 10-15 دقائق</li>
+                                <li>الراحة بعد التبرع: 15 دقيقة</li>
+                            </ul>
+                            <p>لذا يجب أن تخصص حوالي ساعة من وقتك للتبرع بالدم.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- سؤال 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما الذي يجب عليّ فعله قبل التبرع بالدم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>لضمان تجربة تبرع مريحة وناجحة:</p>
+                            <ul>
+                                <li>اشرب كمية كافية من الماء والسوائل قبل التبرع بيوم</li>
+                                <li>تناول وجبة صحية قبل التبرع ب 2-3 ساعات</li>
+                                <li>احصل على قسط كافٍ من النوم ليلة التبرع</li>
+                                <li>تجنب الأطعمة الدسمة قبل التبرع مباشرة</li>
+                                <li>احضر بطاقة الهوية الخاصة بك</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- سؤال 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يمكنني التبرع بالدم إذا كنت مصاباً بنزلة برد؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>لا، لا يمكنك التبرع بالدم إذا كنت تعاني من نزلة برد أو إنفلونزا أو أي عدوى أخرى. يجب أن تكون بصحة جيدة تماماً وقت التبرع. ننصحك بالانتظار حتى تتعافى تماماً وتنتهي جميع الأعراض لمدة 48 ساعة على الأقل قبل التبرع.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- سؤال 7 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هي كمية الدم التي يتم أخذها أثناء التبرع؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>في كل تبرع بالدم، يتم أخذ حوالي 450 مل (أقل من نصف لتر) من الدم. هذه الكمية تمثل حوالي 10% من إجمالي حجم الدم في جسم الشخص البالغ، والذي يمكن للجسم تعويضه بسرعة.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- سؤال 8 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يمكنني ممارسة الرياضة بعد التبرع بالدم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>ينصح بتجنب النشاط البدني الشاق أو الرياضة لمدة 24 ساعة بعد التبرع. يمكنك استئناف الأنشطة الخفيفة بعد بضع ساعات من التبرع، مع التأكد من شرب كمية كافية من السوائل. تجنب رفع الأثقال أو التمارين المكثفة خلال الـ 24 ساعة الأولى.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- سؤال 9 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يمكن لمرضى السكري التبرع بالدم؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>يمكن لمرضى السكري التبرع بالدم إذا كانت حالتهم مستقرة ويتحكمون في مرضهم عن طريق النظام الغذائي أو الأدوية الفموية. أما المرضى الذين يستخدمون الأنسولين فلا يمكنهم التبرع بالدم. في جميع الأحوال، يجب استشارة الطبيب قبل التبرع.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- سؤال 10 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>أين يمكنني التبرع بالدم في محافظة قنا؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>يوجد في محافظة قنا عدة مراكز للتبرع بالدم:</p>
+                            <ul>
+                                <li>بنك الدم الرئيسي بمستشفى قنا العام</li>
+                                <li>بنك الدم بمستشفى نقادة المركزي</li>
+                                <li>بنك الدم بمستشفى دشنا المركزي</li>
+                                <li>بنك الدم بمستشفى الوقف المركزي</li>
+                                <li>الوحدات المتنقلة للتبرع بالدم التي تزور الجامعات والأندية</li>
+                            </ul>
+                            <p>يمكنك الاتصال بنا لمعرفة أقرب مركز لك وأوقات العمل.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- فوتر الصفحة -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="/Users/mac/Desktop/اتبرع بالدم لأهل قنا/تحديث.png" alt="شعار بنك الدم بمحافظة قنا">
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html">الصفحه الرئيسية</a></li>
+                <li><a href="Donation conditions.html">شروط التبرع</a></li>
+                <li><a href="blood donors.html">المتبرعين بالدم</a></li>
+                <li><a href="Frequently Asked Questions.html">الأسئلة الشائعة</a></li>
+                <li><a href="Contact us.html">اتصل بنا</a></li>
+                <li><a href="desgin.html">مصممين الموقع</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61565860452700"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="copyright">
+                 جميع الحقوق محفوظة 2025 © | بنك الدم بمحافظة قنا
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript للتعامل مع الأسئلة الشائعة
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const item = question.parentElement;
+                    const answer = item.querySelector('.faq-answer');
+                    
+                    // إغلاق جميع الإجابات الأخرى
+                    document.querySelectorAll('.faq-item').forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                        }
+                    });
+                    
+                    // تبديل الحالة الحالية
+                    item.classList.toggle('active');
+                    
+                    if (item.classList.contains('active')) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    } else {
+                        answer.style.maxHeight = null;
+                    }
+                });
+            });
+            
+            // فلترة الأسئلة حسب التصنيف
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // هنا يمكنك إضافة كود لفلترة الأسئلة حسب التصنيف
+                    // (يتطلب إضافة فئات للأسئلة في HTML)
+                });
+            });
+        });
+    </script>
+    <!-- ... باقي الكود كما هو ... -->
+
+<!-- كود JavaScript للفلاتر -->
+<script>
+    // عندما يتم الضغط على زر من الفئات
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // إزالة الكلاس "active" من كل الأزرار
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            // إضافة الكلاس "active" للزر الذي تم الضغط عليه
+            button.classList.add('active');
+
+            const category = button.textContent.trim();
+
+            // إظهار أو إخفاء الأسئلة بناءً على الفئة
+            faqItems.forEach(item => {
+                const questionText = item.querySelector('.faq-question span').textContent;
+
+                // إذا الفئة هي "الكل" أو السؤال ينتمي للفئة
+                if (category === "الكل" || questionText.includes(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
