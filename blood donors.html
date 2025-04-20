@@ -287,6 +287,8 @@
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .call-btn:hover {
@@ -561,7 +563,7 @@
                             <td><span class="blood-type">A+</span></td>
                             <td>لايوجد متبرعين</td>
                             <td class="phone-number">00000000000</td>
-                            <td><button class="call-btn">اتصال</button></td>
+                            <td><a href="tel:00000000000" class="call-btn">اتصال</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -620,12 +622,23 @@
             });
         });
         
-        // وظيفة زر الاتصال
+        // وظيفة زر الاتصال المعدلة مع رسالة تأكيد
         document.querySelectorAll('.call-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const phoneNumber = this.parentNode.parentNode.querySelector('.phone-number').textContent;
-                alert(`سيتم الاتصال بالرقم: ${phoneNumber}`);
-                // يمكن استبدال هذا بسكربت الاتصال الفعلي
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const phoneNumber = this.parentNode.parentNode.querySelector('.phone-number').textContent.trim();
+                
+                if(confirm(`هل تريد الاتصال بالرقم ${phoneNumber}؟`)) {
+                    // إنشاء رابط اتصال وإطلاقه
+                    const telLink = document.createElement('a');
+                    telLink.href = `tel:${phoneNumber}`;
+                    document.body.appendChild(telLink);
+                    telLink.click();
+                    document.body.removeChild(telLink);
+                    
+                    // إظهار رسالة تأكيد
+                    alert(`جارٍ الاتصال بالرقم: ${phoneNumber}`);
+                }
             });
         });
         
