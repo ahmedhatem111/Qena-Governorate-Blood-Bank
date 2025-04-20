@@ -193,14 +193,15 @@
         }
         
         .search-box input {
-            width: 100%;
-            padding: 12px 50px 12px 20px;
-            border: 2px solid #DAA520;
-            border-radius: 30px;
-            font-size: 16px;
-            outline: none;
-            transition: all 0.3s;
-        }
+    width: 100%;
+    padding: 12px 50px 12px 20px;
+    border: 2px solid #DAA520;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s;
+    direction: right; /* ✅ عشان يبقي النص يبدأ من اليمين */
+}
         
         .search-box input:focus {
             border-color: #8B0000;
@@ -287,8 +288,6 @@
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
         }
         
         .call-btn:hover {
@@ -422,22 +421,22 @@
                 min-width: 180px;
             }
             
-            .donors-table {
-                display: table;
-                width: 100%;
-                overflow-x: visible;
-                white-space: normal;
-                table-layout: auto;
-            }
-            
-            .donors-table th, 
-            .donors-table td {
-                padding: 8px 5px;
-                font-size: 14px;
-                white-space: normal;
-                word-break: break-word;
-            }
-            
+            @media (max-width: 768px) {
+    .donors-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .donors-table table {
+        width: 100%;
+    }
+
+    .donors-table th,
+    .donors-table td {
+        min-width: 100px;
+    }
+}            
             .donors-table th:nth-child(1),
             .donors-table td:nth-child(1) {
                 width: 20%;
@@ -622,23 +621,12 @@
             });
         });
         
-        // وظيفة زر الاتصال المعدلة مع رسالة تأكيد
+        // وظيفة زر الاتصال
         document.querySelectorAll('.call-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const phoneNumber = this.parentNode.parentNode.querySelector('.phone-number').textContent.trim();
-                
-                if(confirm(`هل تريد الاتصال بالرقم ${phoneNumber}؟`)) {
-                    // إنشاء رابط اتصال وإطلاقه
-                    const telLink = document.createElement('a');
-                    telLink.href = `tel:${phoneNumber}`;
-                    document.body.appendChild(telLink);
-                    telLink.click();
-                    document.body.removeChild(telLink);
-                    
-                    // إظهار رسالة تأكيد
-                    alert(`جارٍ الاتصال بالرقم: ${phoneNumber}`);
-                }
+            btn.addEventListener('click', function() {
+                const phoneNumber = this.parentNode.parentNode.querySelector('.phone-number').textContent;
+                alert(`سيتم الاتصال بالرقم: ${phoneNumber}`);
+                // يمكن استبدال هذا بسكربت الاتصال الفعلي
             });
         });
         
