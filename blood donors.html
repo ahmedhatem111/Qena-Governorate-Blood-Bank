@@ -268,15 +268,16 @@
             color: #8B0000;
         }
         
-        /* تنسيق الأرقام */
+        /* تنسيق الأرقام - التعديل هنا */
         .phone-number {
             direction: ltr;
             text-align: left;
             display: inline-block;
             white-space: nowrap;
             font-family: monospace;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            overflow: visible;
+            width: 100%;
+            max-width: none;
         }
         
         /* زر الاتصال */
@@ -471,9 +472,9 @@
             .phone-number {
                 font-size: 13px;
                 word-break: keep-all;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 100px;
+                overflow: visible;
+                text-overflow: clip;
+                max-width: none;
                 display: inline-block;
                 white-space: nowrap;
             }
@@ -555,7 +556,7 @@
             <!-- شريط البحث -->
             <div class="search-container">
                 <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="ابحث باسم المتبرع أو المنطقة أو فصيلة الدم...">
+                    <input type="text" id="searchInput" placeholder="ابحث بفصيلة الدم أو المنطقة...">
                     <button type="button"><i class="fas fa-search"></i></button>
                 </div>
             </div>
@@ -566,7 +567,6 @@
                     <thead>
                         <tr>
                             <th>الاسم</th>
-                            <th>العمر</th>
                             <th>فصيلة الدم</th>
                             <th>المكان</th>
                             <th>رقم التليفون</th>
@@ -576,147 +576,129 @@
                     <tbody id="donorsTableBody">
                         <tr>
                             <td>بنك دم رسالة قنا</td>
-                            <td>19-50</td>
-                            <td><span class="blood-type">جميع الفصائل</span></td>
+                            <td><span class="blood-type">-A+/A-/B+/B-/AB+/AB-/O+/O</span></td>
                             <td>محافظه قنا</td>
-                            <td class="phone-number">01111167332</td>
+                            <td>01111167332</td>
                             <td><a href="tel:01111167332" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
                             <td>بنك دم رسالة قنا</td>
-                            <td>19-50</td>
-                            <td><span class="blood-type">جميع الفصائل</span></td>
+                            <td><span class="blood-type">-A+/A-/B+/B-/AB+/AB-/O+/O</span></td>
                             <td>محافظه قنا</td>
-                            <td class="phone-number">01008438081</td>
+                            <td>01008438081</td>
                             <td><a href="tel:01008438081" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
                             <td>صلاح سعودي محمد</td>
-                            <td>غير معرف</td>
                             <td><span class="blood-type">A+</span></td>
                             <td>مركز نجع حمادي</td>
-                            <td class="phone-number">01099338657</td>
+                            <td>01099338657</td>
                             <td><a href="tel:01099338657" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
                             <td>أحمد موسى</td>
-                            <td>غير معرف</td>
-                            <td><span class="blood-type">جميع الفصائل</span></td>
+                            <td><span class="blood-type">-A+/A-/B+/B-/AB+/AB-/O+/O</span></td>
                             <td>محافظه قنا</td>
-                            <td class="phone-number">01099011933</td>
+                            <td>01099011933</td>
                             <td><a href="tel:01099011933" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>رنا ياسر</td>
                             <td><span class="blood-type">A+</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01012967093</td>
+                            <td>01012967093</td>
                             <td><a href="tel:01012967093" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>احمد حساني</td>
                             <td><span class="blood-type">A+</span></td>
                             <td>قفط</td>
-                            <td class="phone-number">01017612265</td>
+                            <td>01017612265</td>
                             <td><a href="tel:01017612265" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>حمد الكادي</td>
                             <td><span class="blood-type">B+</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01005323541</td>
+                            <td>01005323541</td>
                             <td><a href="tel:01005323541" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>مينا نبيل</td>
                             <td><span class="blood-type">B-</span></td>
                             <td>مدينه قنا</td>
-                            <td class="phone-number">01205705628</td>
+                            <td>01205705628</td>
                             <td><a href="tel:01205705628" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>احمد ابو عباضيل</td>
                             <td><span class="blood-type">AB+</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01000694751</td>
+                            <td>01000694751</td>
                             <td><a href="tel:01000694751" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>احمد راشد</td>
                             <td><span class="blood-type">O+</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01030242592</td>
+                            <td>01030242592</td>
                             <td><a href="tel:01030242592" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>روان احمد</td>
                             <td><span class="blood-type">O+</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01020331254</td>
+                            <td>01020331254</td>
                             <td><a href="tel:01020331254" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>د/محمد كرم</td>
                             <td><span class="blood-type">O+</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01069081505</td>
+                            <td>01069081505</td>
                             <td><a href="tel:01069081505" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>محمود حكم</td>
                             <td><span class="blood-type">O+</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01090256823</td>
+                            <td>01090256823</td>
                             <td><a href="tel:01090256823" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>حاتم حميد</td>
                             <td><span class="blood-type">O+</span></td>
                             <td>أبو تشت</td>
-                            <td class="phone-number">01014121126</td>
+                            <td>01014121126</td>
                             <td><a href="tel:01014121126" class="call-btn">اتصال</a></td>
                         </tr>
 
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>مروان</td>
                             <td><span class="blood-type">O+</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01094766672</td>
+                            <td>01094766672</td>
                             <td><a href="tel:01094766672" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>احمد بركات</td>
                             <td><span class="blood-type">O+</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01033137357</td>
+                            <td>01033137357</td>
                             <td><a href="tel:01033137357" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
-                            <td>غير معرف</td>
-                            <td>غير معرف</td>
+                            <td>اسلام بركات</td>
                             <td><span class="blood-type">O-</span></td>
                             <td>فرشوط</td>
-                            <td class="phone-number">01015152977</td>
+                            <td>01015152977</td>
                             <td><a href="tel:01015152977" class="call-btn">اتصال</a></td>
                         </tr>
                         <tr>
                             <td>جمعيه رساله</td>
-                            <td>18-40</td>
-                            <td><span class="blood-type">جميع الفصائل</span></td>
+                            <td><span class="blood-type">-A+/A-/B+/B-/AB+/AB-/O+/O</span></td>
                             <td>محافظه قنا</td>
-                            <td class="phone-number">01110019450</td>
+                            <td>01110019450</td>
                             <td><a href="tel:01110019450" class="call-btn">اتصال</a></td>
                         </tr>
                     </tbody>
