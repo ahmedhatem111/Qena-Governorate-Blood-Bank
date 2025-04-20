@@ -179,7 +179,7 @@
             margin: 15px auto;
         }
         
-        /* شريط البحث */
+        /* شريط البحث - تم التعديل هنا */
         .search-container {
             margin-bottom: 30px;
             display: flex;
@@ -193,15 +193,16 @@
         }
         
         .search-box input {
-    width: 100%;
-    padding: 12px 50px 12px 20px;
-    border: 2px solid #DAA520;
-    border-radius: 30px;
-    font-size: 16px;
-    outline: none;
-    transition: all 0.3s;
-    direction: right; /* ✅ عشان يبقي النص يبدأ من اليمين */
-}
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #DAA520;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+            direction: rtl;
+            text-align: right; /* التأكد من بدء النص من اليمين */
+        }
         
         .search-box input:focus {
             border-color: #8B0000;
@@ -341,7 +342,7 @@
         }
         
         .footer-logo img {
-            height: 80px; /* حجم كبير للشعار في الفوتر */
+            height: 80px;
             width: auto;
             max-width: 220px;
             object-fit: contain;
@@ -403,7 +404,7 @@
             }
             
             .logo img {
-                height: 75px; /* حجم أصغر قليلاً للجوال */
+                height: 75px;
                 max-width: 180px;
             }
             
@@ -421,22 +422,21 @@
                 min-width: 180px;
             }
             
-            @media (max-width: 768px) {
-    .donors-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
+            .donors-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
 
-    .donors-table table {
-        width: 100%;
-    }
+            .donors-table table {
+                width: 100%;
+            }
 
-    .donors-table th,
-    .donors-table td {
-        min-width: 100px;
-    }
-}            
+            .donors-table th,
+            .donors-table td {
+                min-width: 100px;
+            }
+            
             .donors-table th:nth-child(1),
             .donors-table td:nth-child(1) {
                 width: 20%;
@@ -485,6 +485,24 @@
             .footer-logo img {
                 height: 130px;
                 max-width: 300px;
+            }
+        }
+        
+        /* تعديلات إضافية للهواتف الصغيرة */
+        @media (max-width: 480px) {
+            .search-box input {
+                padding: 10px 45px 10px 15px;
+                font-size: 14px;
+            }
+            
+            .search-box button {
+                left: 10px;
+                font-size: 16px;
+            }
+            
+            .donate-btn {
+                padding: 8px 15px;
+                font-size: 14px;
             }
         }
     </style>
