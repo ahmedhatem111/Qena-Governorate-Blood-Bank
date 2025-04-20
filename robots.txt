@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ahmedhatem111.github.io/Qena-Governorate-Blood-Bank/sitemap.xml
