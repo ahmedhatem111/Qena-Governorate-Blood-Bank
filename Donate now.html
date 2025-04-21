@@ -574,21 +574,30 @@
                     <input type="text" id="address" name="address" class="form-control" required>
                 </div>
                 
-                <div class="form-group">
-                    <label for="city">المدينة/المركز</label>
-                    <select id="city" name="city" class="form-control" required>
-                        <option value="">اختر المدينة/المركز</option>
-                        <option value="مدينه قنا">مدينه قنا</option>
-                        <option value="مدينه قنا الجديده">مدينه قنا الجديده </option>
-                        <option value="مدينه غرب قنا الجديده">مدينه غرب قنا الجديده </option>
-                        <option value="أبو تشت">أبو تشت</option>
-                        <option value="نجع حمادي">نجع حمادي</option>
-                        <option value="دشنا">دشنا</option>
-                        <option value="قفط">قفط</option>
-                        <option value="قوص">قوص</option>
-                        <option value="فرشوط">فرشوط</option>
-                        <option value="الوقف">الوقف</option>
-                    </select>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">المدينة/المركز</label>
+                        <select id="city" name="city" class="form-control" required>
+                            <option value="">اختر المدينة/المركز</option>
+                            <option value="مدينه قنا">مدينه قنا</option>
+                            <option value="مدينه قنا الجديده">مدينه قنا الجديده </option>
+                            <option value="مدينه غرب قنا الجديده">مدينه غرب قنا الجديده </option>
+                            <option value="أبو تشت">أبو تشت</option>
+                            <option value="نجع حمادي">نجع حمادي</option>
+                            <option value="دشنا">دشنا</option>
+                            <option value="قفط">قفط</option>
+                            <option value="قوص">قوص</option>
+                            <option value="فرشوط">فرشوط</option>
+                            <option value="الوقف">الوقف</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="area">المنطقة</label>
+                        <select id="area" name="area" class="form-control" required disabled>
+                            <option value="">اختر المنطقة</option>
+                            <!-- المناطق سيتم ملؤها بواسطة الجافاسكربت -->
+                        </select>
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -668,6 +677,151 @@
     </footer>
 
     <script>
+        // كائن يحتوي على المناطق لكل مدينة/مركز
+        const areasByCity = {
+            "مدينه قنا": [
+                "منطقه الشئون",
+                "منطقه عمر افندي",
+                "منطقه شارع ال16",
+                "منطقه حوض عشره",
+                "منطقه مدينه العمال",
+                "منطقه النحال",
+                "منطقه المساكن",
+                "المنطقة الصناعية",
+                "منطقه نجع سعيد",
+                "منطقه العبابده",
+                "منطقه الحصوايه",
+                "منطقه العسيرات",
+                "منطقه الترامية",
+                "منطقه الاوسط قفط",
+                "منطقه القاره",
+                "منطقه السيل",
+                "منطقه القناويه",
+                "منطقه الشيخية",
+                "منطقه العوامر",
+                "منطقه الكلاحين",
+                "منطقه الاشراف",
+                "منطقه الحجيرات",
+                "منطقه المساعيد",
+                "منطقه دمية",
+                "منطقه الزوايدة",
+                "منطقه الأبطال",
+                "منطقه الترامسة",
+                "منطقه الحسينات",
+                "منطقه الخزان",
+                "منطقه الطوابية",
+                "منطقه العركي",
+                "منطقه الكرنك",
+                "منطقه المحروسه",
+                "منطقه المخدامة",
+                "منطقه اولاد عمرو",
+                "منطقه بخيته",
+                "منطقه جراجوس",
+                "منطقه جزيره الطرد",
+                "خزام",
+                "دير الجنادلة",
+                "حي غرب",
+                "حي شرق",
+                "حي العرب",
+                "حي الجامعة",
+            ],
+            "مدينه قنا الجديده": [
+                "الحي الأول",
+                "الحي الثاني",
+                "الحي الثالث",
+                "الحي الرابع",
+                "الحي الخامس",
+                "الحي السادس"
+            ],
+            "مدينه غرب قنا الجديده": [
+                "الحي السكني الأول",
+                "الحي السكني الثاني",
+                "الحي السكني الثالث",
+            ],
+            "أبو تشت": [
+                "مركز أبو تشت",
+                "قرية العسيرات",
+                "قرية الحجيرات",
+                "قرية الكلاحين",
+                "قرية النغاميش",
+                "قرية العزازية"
+            ],
+            "نجع حمادي": [
+                "مركز نجع حمادي",
+                "قرية البقاشين",
+                "قرية الحاجر",
+                "قرية الديابات",
+                "قرية السلاموني",
+                "قرية الكرنك"
+            ],
+            "دشنا": [
+                "مركز دشنا",
+                "قرية العطيات",
+                "قرية القلعة",
+                "قرية النخيلة",
+                "قرية الهريدة",
+                "قرية الوقف"
+            ],
+            "قفط": [
+                "مركز قفط",
+                "قرية الجباب",
+                "قرية الحبيل",
+                "قرية الدير",
+                "قرية الشغب",
+                "قرية العليقات"
+            ],
+            "قوص": [
+                "مركز قوص",
+                "قرية البغدادي",
+                "قرية الجعافرة",
+                "قرية الديلمون",
+                "قرية الشناينة",
+                "قرية العوامية"
+            ],
+            "فرشوط": [
+                "مركز فرشوط",
+                "قرية الجمالية",
+                "قرية الحومة",
+                "قرية الدير",
+                "قرية الشناينة",
+                "قرية العزازية"
+            ],
+            "الوقف": [
+                "مركز الوقف",
+                "قرية البقاشين",
+                "قرية الحاجر",
+                "قرية الديابات",
+                "قرية السلاموني",
+                "قرية الكرنك"
+            ]
+        };
+
+        // عند تغيير اختيار المدينة
+        document.getElementById('city').addEventListener('change', function() {
+            const citySelect = this;
+            const areaSelect = document.getElementById('area');
+            const selectedCity = citySelect.value;
+            
+            // مسح الخيارات الحالية
+            areaSelect.innerHTML = '<option value="">اختر المنطقة</option>';
+            
+            if (selectedCity && areasByCity[selectedCity]) {
+                // تفعيل قائمة المناطق
+                areaSelect.disabled = false;
+                
+                // إضافة المناطق الخاصة بالمدينة المختارة
+                areasByCity[selectedCity].forEach(function(area) {
+                    const option = document.createElement('option');
+                    option.value = area;
+                    option.textContent = area;
+                    areaSelect.appendChild(option);
+                });
+            } else {
+                // تعطيل قائمة المناطق إذا لم يتم اختيار مدينة
+                areaSelect.disabled = true;
+            }
+        });
+
         document.getElementById('donorForm').addEventListener('submit', function(e) {
             const phoneInput = document.getElementById('phone');
             const phoneValue = phoneInput.value;
