@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدعم المادي | بنك الدم محافظة قنا</title>
+    <meta name="description" content="ادعم مبادرة بنك الدم محافظة قنا لتطوير الخدمات وإنقاذ المزيد من الأرواح من خلال التبرع المادي عبر فودافون كاش">
+    <meta name="keywords" content="تبرع مادي, دعم بنك الدم, تبرعات قنا, فودافون كاش, دعم مشروع خيري">
+    <meta name="author" content="Ahmed Hatem">
+    <link rel="icon" href="دم.png" type="ايقونه الموقع">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f3e9;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 90px;
+        }
+        
+        /* الشريط العلوي - التصميم الجديد */
+        .main-nav {
+            background: linear-gradient(to right, #8B0000, #CD5C5C);
+            border-bottom: 3px solid #DAA520;
+            padding: 0 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            height: 90px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* الشعار على اليمين - تصميم جديد */
+        .logo {
+            order: 2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 70px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.7));
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* القائمة المنسدلة */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            order: 1;
+        }
+        
+        .dropbtn {
+            background-color: transparent;
+            color: #FFF8DC;
+            padding: 12px 18px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dropbtn i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .dropdown:hover .dropbtn i {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #8B0000;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+        
+        .dropdown-content a {
+            color: #FFF8DC;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: right;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #CD5C5C;
+            color: #DAA520;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* زر التبرع الآن */
+        .nav-actions {
+            order: 3;
+        }
+        
+        .donate-btn {
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            background-color: #DAA520;
+            color: #8B0000 !important;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+        }        
+        
+        .donate-btn:hover {
+            background-color: #F5DEB3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* قسم الدعم المالي */
+        .financial-support {
+            padding: 80px 20px;
+            background-color: #FFF8DC;
+        }
+        
+        .support-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .support-container h2 {
+            color: #8B0000;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .support-container h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #DAA520;
+            margin: 15px auto;
+        }
+        
+        .support-intro {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* طرق الدعم */
+        .support-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .method-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 350px;
+            transition: transform 0.3s ease;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .method-icon {
+            font-size: 3rem;
+            color: #8B0000;
+            margin-bottom: 20px;
+        }
+        
+        .method-card h3 {
+            color: #DAA520;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .method-details {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .phone-number {
+            direction: ltr;
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        .copy-btn {
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #CD5C5C;
+        }
+        
+        .method-btn {
+            display: inline-block;
+            background-color: #8B0000;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .method-btn:hover {
+            background-color: #CD5C5C;
+            transform: translateY(-3px);
+        }
+
+        /* أنماط جديدة للنموذج المدمج */
+        .ussd-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #ddd;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #8B0000;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .generate-btn {
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .generate-btn:hover {
+            background-color: #CD5C5C;
+        }
+
+        .ussd-result {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .ussd-code {
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: bold;
+            color: #8B0000;
+            direction: ltr;
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .call-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .call-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* لماذا ندعم؟ */
+        .why-support {
+            padding: 80px 20px;
+            background-color: #f9f3e9;
+        }
+        
+        .why-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .why-container h2 {
+            color: #8B0000;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .why-container h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #DAA520;
+            margin: 15px auto;
+        }
+        
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .reason-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .reason-card h3 {
+            color: #8B0000;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* فوتر الصفحة */
+        footer {
+            background: linear-gradient(to right, #8B0000, #CD5C5C);
+            color: #FFF8DC;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 80px;
+            width: auto;
+            max-width: 220px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(218, 165, 32, 0.7));
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: #FFF8DC;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links a:hover {
+            color: #DAA520;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: #FFF8DC;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #DAA520;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+            
+            .main-nav {
+                height: 80px;
+                padding: 0 15px;
+            }
+            
+            .logo img {
+                height: 75px;
+                max-width: 180px;
+            }
+            
+            .dropbtn {
+                padding: 10px 12px;
+                font-size: 15px;
+            }
+            
+            .donate-btn {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+            
+            .dropdown-content {
+                min-width: 180px;
+            }
+            
+            .support-container h2,
+            .why-container h2 {
+                font-size: 2rem;
+            }
+            
+            .support-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .method-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .footer-logo img {
+                height: 130px;
+                max-width: 300px;
+            }
+        }
+    </style>
+    <!-- روابط أيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- الشريط العلوي الجديد -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <!-- الشعار على اليمين -->
+            <div class="logo">
+                <img src="تحديث.png" alt="شعار بنك الدم بمحافظة قنا">
+            </div>
+            
+            <!-- زر التبرع الآن -->
+            <div class="nav-actions">
+                <a href="Donate now.html" class="donate-btn">اضف بيناتك في الموقع 
+                    <br> 
+                    و كن متبرع بالدم
+                </a>
+            </div>
+            
+            <!-- القائمة المنسدلة -->
+            <div class="dropdown">
+                <button class="dropbtn">
+                    تصفح الموقع 
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="index.html">الصفحه الرئيسية</a>
+                    <a href="blood donors.html">المتبرعين بالدم</a>
+                    <a href="Donation conditions.html">شروط التبرع</a>
+                    <a href="Frequently Asked Questions.html">الأسئلة الشائعة</a>
+                    <a href="Contact us.html">اتصل بنا</a>
+                    <a href="desgin.html">مصممين الموقع</a>
+                    <a href="pay.html">تبرع للموقع وساهم في تطويره</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- قسم الدعم المالي -->
+    <section class="financial-support">
+        <div class="support-container">
+            <h2>ادعم موقع بنك الدم محافظة قنا</h2>
+            <div class="support-intro">
+                <p>يساهم دعمكم المادي في تطوير خدمات بنك الدم المحلي وزيادة قدرته على إنقاذ المزيد من الأرواح. كل تبرع مهما كان حجمه يساعد في توفير المعدات الطبية، تنظيم حملات التبرع، وتوعية المجتمع بأهمية التبرع بالدم.</p>
+            </div>
+            
+            <div class="support-methods">
+                <!-- بطاقة فودافون كاش المحدثة -->
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>فودافون كاش</h3>
+                    <div class="method-details">
+                        <p>يمكنك التبرع بسهولة وسرعة عبر خدمة فودافون كاش بإحدى الطريقتين:</p>
+                        <div class="phone-number" id="vodafone-number">01032331231</div>
+                        <button class="copy-btn" onclick="copyToClipboard('vodafone-number')">نسخ الرقم</button>
+                        <p>طريقة الاستخدام:<br>
+                        1. افتح تطبيق فودافون كاش<br>
+                        2. اختر "إرسال أموال"<br>
+                        3. أدخل الرقم أعلاه<br>
+                        4. حدد المبلغ ثم أكد العملية</p>
+                        
+                        <!-- قسم إنشاء كود USSD -->
+                        <div class="ussd-section">
+                            <h4>أو أنشئ كود USSD للتبرع:</h4>
+                            <div class="form-group">
+                                <label for="amount">المبلغ (جنيه مصري):</label>
+                                <input type="number" id="amount" placeholder="أدخل المبلغ" min="1">
+                            </div>
+                            <button class="generate-btn" onclick="generateUSSD()">إنشاء كود USSD</button>
+                            
+                            <div class="ussd-result" id="ussdResult">
+                                <p>كود التبرع:</p>
+                                <span class="ussd-code" id="ussdCode"></span>
+                                <a href="#" class="call-btn" id="callLink">اتصل الآن للتبرع</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- بطاقة التبرع العيني -->
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>دعم عيني</h3>
+                    <div class="method-details">
+                        <p>يمكنك التبرع بالمعدات الطبية، المواد الاستهلاكية، أو دعم الحملات التوعوية. تواصل معنا لمعرفة الاحتياجات الحالية.</p>
+                    </div>
+                    <a href="Contact us.html" class="method-btn">تواصل معنا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم لماذا ندعم؟ -->
+    <section class="why-support">
+        <div class="why-container">
+            <h2>لماذا ندعم بنك الدم محافظة قنا؟</h2>
+            
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <h3>سد العجز في الدم</h3>
+                    <p>يعاني بنك الدم المحلي من نقص مستمر في جميع فصائل الدم خاصة في فصائل الدم النادرة. تبرعك المالي يساعد في تنظيم المزيد من حملات التبرع وتوفير الدم للمرضى.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <h3>تطوير البنية التحتية</h3>
+                    <p>الأموال التي نتلقاها تذهب مباشرة لشراء أحدث الأجهزة الطبية، توفير المواد الاستهلاكية، وتحسين مراكز التبرع لضمان سلامة المتبرعين والمستفيدين.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <h3>التوعية المجتمعية</h3>
+                    <p>جزء من التبرعات يخصص لحملات التوعية بأهمية التبرع بالدم وتصحيح المفاهيم الخاطئة حوله، مما يزيد من عدد المتبرعين المنتظمين.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <h3>دعم المرضى غير القادرين</h3>
+                    <p>نساعد المرضى غير القادرين على توفير الدم ومشتقاته مجاناً، خاصة في حالات الطوارئ والحوادث التي تتطلب كميات كبيرة من الدم.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <h3>البحث والتطوير</h3>
+                    <p>ندعم الأبحاث المحلية لتحسين تقنيات فصل مكونات الدم وتخزينه، مما يزيد من فترة صلاحيته ويقلل من الهدر.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <h3>تغطية النفقات التشغيلية</h3>
+                    <p>تشمل التبرعات تغطية تكاليف النقل، التخزين الآمن، الفحوصات المخبرية، وتدريب الكوادر الطبية على أعلى المعايير.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- فوتر الصفحة -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="تحديث.png" alt="شعار بنك الدم بمحافظة قنا">
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html">الصفحه الرئيسية</a></li>
+                <li><a href="Donation conditions.html">شروط التبرع</a></li>
+                <li><a href="blood donors.html">المتبرعين بالدم</a></li>
+                <li><a href="Frequently Asked Questions.html">الأسئلة الشائعة</a></li>
+                <li><a href="Contact us.html">اتصل بنا</a></li>
+                <li><a href="desgin.html">مصممين الموقع</a></li>
+                <li><a href="pay.html">تبرع للموقع وساهم في تطويره</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/profile.php?id=61565860452700"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="copyright">
+                 جميع الحقوق محفوظة 2025 © | بنك الدم بمحافظة قنا
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // دالة نسخ الرقم إلى الحافظة
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const textToCopy = element.textContent;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // تغيير نص الزر مؤقتًا للإشارة إلى نجاح النسخ
+                const button = element.nextElementSibling;
+                const originalText = button.textContent;
+                button.textContent = 'تم النسخ!';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
+        // دالة إنشاء كود USSD
+        function generateUSSD() {
+            const amount = document.getElementById('amount').value;
+            const phoneNumber = '01032331231';
+            
+            if (!amount || amount <= 0) {
+                alert('الرجاء إدخال مبلغ صحيح للتبرع');
+                return;
+            }
+            
+            const ussdCode = `*8*8*${phoneNumber}*${amount}#`;
+            
+            document.getElementById('ussdCode').textContent = ussdCode;
+            document.getElementById('callLink').href = `tel:${ussdCode}`;
+            document.getElementById('ussdResult').style.display = 'block';
+            
+            // Scroll to the result
+            document.getElementById('ussdResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
